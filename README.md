@@ -5,16 +5,23 @@ There are two main classes to be looking at; they are introduced after the _gett
 
 # Getting started
 
-0. Highest recommendation to run on Linux. MacOS should be possible, but it's just a pain.
+Prerequisites: Highest recommendation to run on Linux. MacOS should be possible, but it's just a pain.
+
 1. For jsitter, clone the jsitter repo: https://github.com/quentinLeDilavrec/jsitter
 2. Fix the merge conflict in jsitter/native/tree_sitter/lib/include/tree_sitter/api.h around line 670 (take the HEAD)
-3. In jsitter/native, edit the file CMakeLists.txt to add the python and javascript libraries: add_library(tspython SHARED grammars/tree-sitter-python/src/parser.c grammars/tree-sitter-python/src/scanner.cc), and the same for javascript. Don't forget to add "ts_python" and "tsjavascript" as arguments at the bottom in target_link_libraries.
-4. In jsitter/native/grammars, git clone the tree-sitter-python and tree-sitter-javascript grammars (from https://github.com/tree-sitter/tree-sitter-python, for other languages, replace python with language name).
-5. In jsitter, run ./make.sh
-6. In jsitter, run mvn install
-7. Copy the generated .so files to the polyglot project: cp jsitter/native/build/linux-x86-64/\*.so PolyglotAST/src/main/resources/
-8. In the PolyglotAST folder, run mvn clean compile
-9. Now you can run App.java and start developing on top of it.
+3. In jsitter/native, edit the file CMakeLists.txt to add the python and javascript libraries: 
+```cmake
+add_library(tspython SHARED grammars/tree-sitter-python/src/parser.c grammars/tree-sitter-python/src/scanner.cc)
+add_library(tsjavascript SHARED grammars/tree-sitter-javascript/src/parser.c grammars/tree-sitter-javascript/src/scanner.c)
+```
+4. In the same CMakeLists.txt, don't forget to add "tspython" and "tsjavascript" as arguments at the bottom in target_link_libraries. 
+5. In jsitter/native/grammars, git clone the tree-sitter-python and tree-sitter-javascript grammars (from https://github.com/tree-sitter/tree-sitter-python & https://github.com/tree-sitter/tree-sitter-javascript).
+6. In jsitter, run ./make.sh (if you have errors on the .primary_state_ids field in parser.c, comment the line)
+7. In jsitter, run mvn install
+8. Copy the generated .so files to the polyglot project: cp jsitter/native/build/linux-x86-64/\*.so PolyglotAST/src/main/resources/
+9. In the PolyglotAST folder, run mvn clean compile
+10. Now you can run App.java and start developing on top of it.
+11. If you wish to add support for more languages to the framework, repeat steps 3 through 9. A list of grammars is available under the "Parsers" section of this page: https://tree-sitter.github.io/tree-sitter/
 
 # Classes of interest
 
