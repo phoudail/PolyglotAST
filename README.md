@@ -5,7 +5,10 @@ There are two main classes to be looking at; they are introduced after the _gett
 
 # Getting started
 
-Prerequisites: Highest recommendation to run on Linux. MacOS should be possible, but it's just a pain.
+Prerequisites: 
+- Highest recommendation to run on Linux. MacOS should be possible, but you are on your own to resolve errors.
+- You will need a JVM, Maven, CMake and Clang installed on your system
+- While not necessary to extend the framework, the examples provided in the GraalSamples folder will require an installation of GraalVM
 
 1. For jsitter, clone the jsitter repo: https://github.com/quentinLeDilavrec/jsitter
 2. Fix the merge conflict in jsitter/native/tree_sitter/lib/include/tree_sitter/api.h around line 670 (take the HEAD)
