@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Note: due to JSitter not being maintained and up to date with the tree-sitter grammars and API, this repositery is currently not suitable for development. It might be picked up again in the future, but until then consider using the Rust implementation instead, available at https://github.com/phoudail/polyglot_ast
+
 This repository contains tools to build polyglot ASTs from source code of GraalVM applications. It currently partially supports python and javascript, and is built in a manner that aims to facilitate addition of new languages.  
 You will need JSitter in order to be able to run the project, which is available at https://github.com/JetBrains/jsitter  
 
